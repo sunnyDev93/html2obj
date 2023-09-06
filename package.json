@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "html2obj-maciej-kolber": "^1.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.4"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "parser": "node index.js markup.html",
+    "test": "jest"
+  }
+}
