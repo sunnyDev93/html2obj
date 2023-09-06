@@ -11,6 +11,12 @@ npm install html2obj-maciej-kolber
 npm install --save-dev jest
 ```
 
+## Run Command
+
+```bash
+npm start 'your-html-file'('markup.html')
+```
+
 ## Usage
 
 Once installed, you can use the `parseHTML` function in your JavaScript code as follows:
@@ -19,7 +25,7 @@ Once installed, you can use the `parseHTML` function in your JavaScript code as 
 const parseHTML = require("html2obj-maciej-kolber");
 
 const htmlString =
-  '<div id="container" class="main-content"><p>Hello, <span class="name">John</span>!</p></div>';
+  '<div style="background-color: yellow; font-size: 14px" id="first-div">Hello, friends <p class="para" style="font-family: monospace; font-size: 11px">Lorem ipsum dolor sit</p><footer style="width: auto; height: 100px; color: blue"><span>This is the end</span></footer><div>';
 
 const parsedObject = parseHTML(htmlString);
 
@@ -44,8 +50,14 @@ If the HTML string does not contain a top-level `<div>` element, the function re
 Suppose you have the following HTML string:
 
 ```html
-<div id="container" class="main-content">
-  <p>Hello, <span class="name">John</span>!</p>
+<div style="background-color: yellow; font-size: 14px" id="first-div">
+  Hello, friends
+  <p class="para" style="font-family: monospace; font-size: 11px">
+    Lorem ipsum dolor sit
+  </p>
+  <footer style="width: auto; height: 100px; color: blue">
+    <span> This is the end </span>
+  </footer>
 </div>
 ```
 
@@ -54,19 +66,35 @@ Using the `parseHTML` function on this string will result in the following parse
 ```javascript
 {
   "tag": "div",
-  "id": "container",
-  "class": "main-content",
+  "id": "first-div",
+  "style": {
+    "background-color": "yellow",
+    "font-size": "14px"
+  },
+  "text": "Hello, friends",
   "children": [
     {
       "tag": "p",
+      "class": "para",
+      "style": {
+        "font-family": "monospace",
+        "font-size": "11px"
+      },
+      "text": "Lorem ipsum dolor sit"
+    },
+    {
+      "tag": "footer",
+      "style": {
+        "width": "auto",
+        "height": "100px",
+        "color": "blue"
+      },
       "children": [
         {
           "tag": "span",
-          "class": "name",
-          "text": "John"
+          "text": "This is the end"
         }
-      ],
-      "text": "Hello, John!"
+      ]
     }
   ]
 }
