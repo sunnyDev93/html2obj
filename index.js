@@ -1,6 +1,6 @@
 // Import the necessary modules
 const fs = require('fs').promises; // Use built-in promises for file operations
-const parseHTML = require('html2obj-maciej.k')
+const parseHTML = require('html2obj-maciej-kolber')
 // Create an async function to encapsulate the main logic
 const main = async () => {
   try {
